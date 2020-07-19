@@ -1,25 +1,45 @@
 // feature 1
 import React from 'react';
+import data from './data.json';
+import Products from './components/Products';
 
-function App() {
-  return (
-    <div className="grid-container">
-      {/* page header */}
-      <header className="page-header">
-        <a href="/">React Shopping Cart</a>
-      </header>
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      products: data.products,
+      size: "",
+      sort: "",
+    }
+  }
 
-      {/* page section */}
-      <section className="page-section">
-        Product List
-      </section>
-
-      {/* page footer */}
-      <footer className="page-footer">
-        All rights reserved.
-      </footer>
-    </div>
-  );
+  render(){
+    return (
+      <div className="grid-container">
+        {/* page header */}
+        <header className="page-header">
+          <a href="/">React Shopping Cart</a>
+        </header>
+  
+        {/* page section */}
+        <section className="page-section">
+          <div className="content">
+            <div className="main">
+              <Products products={this.state.products}></Products>
+            </div>
+            <div className="sidebar">
+              Cart Items
+            </div>
+          </div>
+        </section>
+  
+        {/* page footer */}
+        <footer className="page-footer">
+          All rights reserved.
+        </footer>
+      </div>
+    );
+  }
 }
 
 export default App;

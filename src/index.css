@@ -115,6 +115,7 @@ a{
 
 .product-price div{
   font-size: 2rem;
+  flex: 0.3;
 }
 
 .button{
@@ -122,6 +123,7 @@ a{
   border: 0.1rem #c0c0c0 solid;
   background: #f0f0f0;
   cursor: pointer;
+  flex: 0.7;
 }
 
 .button:hover{
@@ -130,4 +132,17 @@ a{
 
 .button.primary{
   background: #ffc040;
+}
+
+/* FIlter */
+.filter{
+  display: flex;
+  padding: 1rem;
+  margin: 1rem;
+  border-bottom: .1rem #c0c0c0 solid;
+  justify-content: space-between;
+}
+
+.filter div{
+  flex: 1;
 }

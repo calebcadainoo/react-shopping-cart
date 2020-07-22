@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import formatCurrency from "../util";
+import Fade from "react-reveal/Fade";
 
 export default class Cart extends Component {
 	constructor(props){
@@ -40,22 +41,24 @@ export default class Cart extends Component {
 				)}
 				<div>
 					<div className="cart">
-						<ul className="cart-items">
-							{cartItems.map(item => (
-								<li key={item._id}>
-									<div>
-										<img src={item.image} alt={item.title} />
-									</div>
-									<div>
-										<div>{item.title}</div>
-										<div className="right">
-											{formatCurrency(item.price)} x {item.count} {" "}
-											<button class="button" onClick={() => this.props.removeFromCart(item)}>Remove</button>
+						<Fade left cascade={true}>
+							<ul className="cart-items">
+								{cartItems.map(item => (
+									<li key={item._id}>
+										<div>
+											<img src={item.image} alt={item.title} />
 										</div>
-									</div>
-								</li>
-							))}
-						</ul>
+										<div>
+											<div>{item.title}</div>
+											<div className="right">
+												{formatCurrency(item.price)} x {item.count} {" "}
+												<button class="button" onClick={() => this.props.removeFromCart(item)}>Remove</button>
+											</div>
+										</div>
+									</li>
+								))}
+							</ul>
+						</Fade>
 					</div>
 					{cartItems.length !== 0 && (
 						<div className="cart">
@@ -77,25 +80,27 @@ export default class Cart extends Component {
 							</div>
 							{this.state.showCheckout && (
 								<div className="cart">
-									<form onSubmit={this.createOrder}>
-										<ul className="form-container">
-										<li>
-												<label for="">Email</label>
-												<input type="email" name="email" required onChange={this.handleInput} /> 
-											</li>
+									<Fade right cascade>
+										<form onSubmit={this.createOrder}>
+											<ul className="form-container">
 											<li>
-												<label for="">Name</label>
-												<input type="text" name="name" required onChange={this.handleInput} /> 
-											</li>
-											<li>
-												<label for="">Address</label>
-												<textarea name="address" required onChange={this.handleInput}></textarea>
-											</li>
-											<li>
-												<button className="button primary" type="submit">Checkout</button>
-											</li>
-										</ul>
-									</form>
+													<label for="">Email</label>
+													<input type="email" name="email" required onChange={this.handleInput} /> 
+												</li>
+												<li>
+													<label for="">Name</label>
+													<input type="text" name="name" required onChange={this.handleInput} /> 
+												</li>
+												<li>
+													<label for="">Address</label>
+													<textarea name="address" required onChange={this.handleInput}></textarea>
+												</li>
+												<li>
+													<button className="button primary" type="submit">Checkout</button>
+												</li>
+											</ul>
+										</form>
+									</Fade>
 								</div>
 							)}
 						</div>

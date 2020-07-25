@@ -25,7 +25,7 @@ export default class Products extends Component {
 		
 		return (
 			<div>
-				<Fade bottom cascade={true}>
+				<Fade bottom cascade>
 					<ul className="products">
 						{this.props.products.map(product => (
 							<li key={product._id}>

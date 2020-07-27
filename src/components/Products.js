@@ -4,7 +4,7 @@ import Zoom from "react-reveal/Zoom"
 import Fade from "react-reveal/Fade"
 import Modal from "react-modal"
 import { connect } from "react-redux"
-import { fetchProducts } from "../actions/producttActions"
+import { fetchProducts } from "../actions/productActions"
 
 class Products extends Component {
 	constructor(props){
@@ -28,12 +28,11 @@ class Products extends Component {
 
 	render() {
 		const { product } = this.state;
-		
+		console.log(this.props.products);
 		return (
 			<div>
 				<Fade bottom cascade>
-					{
-						!this.props.products ? (
+					{!this.props.products ? (
 							<div>Loading...</div>
 						):(
 							<ul className="products">
@@ -97,6 +96,8 @@ class Products extends Component {
 	}
 }
 
-export default connect((state) => ({products: state.products.items}), {
-	fetchProducts,
-})(Products);
+export default connect(
+	(state) => ({products: state.products.filteredItems}), {
+		fetchProducts,
+	}
+)(Products);

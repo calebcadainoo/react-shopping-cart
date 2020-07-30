@@ -264,3 +264,25 @@ textarea{
   font-size: 2rem;
   cursor: pointer;
 }
+
+/* Order Details */
+.order-details{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.order-details li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-details li div{
+  padding: 10px;
+}
+
+.success-message{
+  color: green;
+}
